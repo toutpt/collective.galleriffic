@@ -1,0 +1,4 @@
+<layers>
+    <layer name="collective.galleriffic"
+           interface="collective.galleriffic.interfaces.IGallerifficLayer" />
+</layers>
