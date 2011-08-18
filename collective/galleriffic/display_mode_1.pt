@@ -7,7 +7,7 @@
       i18n:domain="collective.galleriffic">
 <body>
 <div metal:fill-slot="content-core">
-<link rel="stylesheet" type="text/css" tal:attributes="href string:${portal_state/portal_url}/++resource++galleriffic/css/galleriffic-1.css"/>
+<link rel="stylesheet" type="text/css" tal:attributes="href string:${view/stylesheet}"/>
 <div id="galleriffic" tal:define="gallery nocall:context/@@gallery">
  <div id="gallery" class="content">
      <div id="controls" class="controls"></div>

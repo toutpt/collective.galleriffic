@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="collective.galleriffic">
+<body>
+<div metal:fill-slot="content-core">
+<link rel="stylesheet" type="text/css" tal:attributes="href string:${view/stylesheet}"/>
+<div id="galleriffic" tal:define="gallery nocall:context/@@gallery">
+ <div id="gallery" class="content">
+     <div id="controls" class="controls"></div>
+     <div class="slideshow-container">
+         <div id="loading" class="loader"></div>
+         <div id="slideshow" class="slideshow"></div>
+     </div>
+ </div>
+ <div id="thumbs" class="navigation">
+
+    <ul class="thumbs noscript">
+        <li tal:repeat="photo gallery/photos">
+            <a class="thumb" tal:attributes="name photo/id; href photo/url; title photo/title" tal:content="photo/title">
+            </a>
+            <div class="caption" tal:content="photo/description">
+            </div>
+        </li>
+    </ul>
+ </div>
+</div>
+<script type="text/javascript" tal:content="view/settings_javascripts"></script>
+<script type="text/javascript">
+galleriffic_config['imageContainerSel'] = "#slideshow";
+galleriffic_config['controlsContainerSel'] = "#controls";
+$('div.content').css('display', 'block');
+$('div.navigation').css({'width' : '300px', 'float' : 'left'});
+</script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+  var gallery = $('#thumbs').galleriffic(galleriffic_config);
+});
+</script>
+</div>
+</body>
+</html>

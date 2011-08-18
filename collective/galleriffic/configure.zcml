@@ -19,18 +19,17 @@
 
   <include package="plone.app.contentmenu"/>
   <browser:page
-    name="galleriffic"
+    name="galleriffic_view"
     menu="plone_displayviews"
     title="Galleriffic view"
     for="*"
     class=".view.GallerifficView"
-    template="view.pt"
     permission="zope2.View"
     layer=".interfaces.IGallerifficLayer"
     />
   <browser:resourceDirectory
     name="galleriffic"
-    directory="resources"
+    directory="css"
     layer=".interfaces.IGallerifficLayer"
     />
 

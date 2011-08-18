@@ -1,10 +1,26 @@
+from zope import component
 from zope import schema
 from zope import interface
 from zope.i18nmessageid import MessageFactory
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from collective.configviews import ConfigurableBaseView
 
 _ = MessageFactory('collective.galleriffic')
+
+
+from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
+
+display_modes = SimpleVocabulary(
+    [
+     SimpleTerm(value='display_mode_1', title=_(u'Model 1')),
+     SimpleTerm(value='display_mode_2', title=_(u'Model 2')),
+     SimpleTerm(value='display_mode_3', title=_(u'Model 3')),
+    ]
+    )
+
 
 class IGallerifficConfiguration(interface.Interface):
     """Galleriffic options"""
@@ -58,6 +74,11 @@ class IGallerifficConfiguration(interface.Interface):
                                            description=_(u"If using the default transitions, specifies the duration of the transitions"),
                                            default=1000)
 
+    display_mode = schema.Choice(title=_(u"Display Mode"),
+                                 vocabulary=display_modes,
+                                 default="display_mode_1")
+
+
 
 class GallerifficView(ConfigurableBaseView):
     """Galleriffic configurable view"""
@@ -65,3 +86,24 @@ class GallerifficView(ConfigurableBaseView):
     jsvarname = 'galleriffic_config'
     settings_providers = ('context.zope.annotation',)
     
+    display_mode_1 = ViewPageTemplateFile('display_mode_1.pt')
+    display_mode_2 = ViewPageTemplateFile('display_mode_2.pt')
+    display_mode_3 = ViewPageTemplateFile('display_mode_3.pt')
+
+    def __call__(self):
+        dm = self.display_mode()
+        view = getattr(self, dm, None)
+        if view is None:
+            view = self.display_mode_1
+        return view()
+
+    def stylesheet(self):
+        dm = self.display_mode()
+        css = '/++resource++galleriffic/%s.css'%dm
+        portal_state = component.getMultiAdapter((self.context, self.request), 
+                                                 name=u'plone_portal_state')
+        portal_url = portal_state.portal_url()
+        return portal_url + css
+
+    def display_mode(self):
+        return self.settings.get('display_mode', 'display_mode_1')
