@@ -1,0 +1,161 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: Plone\n"
+"POT-Creation-Date: 2011-08-21 16:38+0000\n"
+"PO-Revision-Date: 2011-05-02 09:58+0000\n"
+"Last-Translator: toutpt <toutpt@gmail.com>\n"
+"Language-Team: French <plone-fr@lists.plone.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.galleriffic\n"
+"Report-Msgid-Bugs-To: http://dev.plone.org/plone\n"
+"Language: fr\n"
+
+#: ./view.py:120
+msgid "&lsaquo; Prev"
+msgstr "&lsaquo; Pré"
+
+#: ./view.py:65
+msgid "Autostart"
+msgstr "Démarrage automatique"
+
+#: ./view.py:28
+msgid "Delay"
+msgstr ""
+
+#: ./view.py:77
+msgid "Display Mode"
+msgstr "Mode d'affichage"
+
+#: ./display_mode_3.pt:34
+msgid "Download Original"
+msgstr "Télécharger l'originale"
+
+#: ./view.py:61
+msgid "Enable Keyboard navigation"
+msgstr "Activer la navigation au clavier"
+
+#: ./view.py:42
+msgid "Enable bottom pager"
+msgstr "Activer la navigation basse"
+
+#: ./view.py:57
+msgid "Enable history"
+msgstr "Activer le plugin history"
+
+#: ./view.py:39
+msgid "Enable top pager"
+msgstr "Activer la navigation haute"
+
+#: ./view.py:74
+msgid "If using the default transitions, specifies the duration of the transitions"
+msgstr ""
+
+#: ./view.py:45
+msgid "Max pages to show"
+msgstr "Nombre max de pages à afficher"
+
+#: ./view.py:18
+msgid "Model 1"
+msgstr "Modèle 1"
+
+#: ./view.py:19
+msgid "Model 2"
+msgstr "Modèle 2"
+
+#: ./view.py:20
+msgid "Model 3"
+msgstr "Modèle 3"
+
+#: ./display_mode_3.pt:18
+#: ./view.py:118
+msgid "Next"
+msgstr "Suivante"
+
+#: ./view.py:119
+msgid "Next &rsaquo;"
+msgstr "Suivante &rsaquo;"
+
+#: ./view.py:32
+msgid "Number of thubnails to show per page"
+msgstr "Nombre de vignettes à afficher par page"
+
+#: ./display_mode_3.pt:17
+#: ./view.py:116
+msgid "Pause"
+msgstr "Pause"
+
+#: ./display_mode_3.pt:16
+#: ./view.py:115
+msgid "Play"
+msgstr "Lecture"
+
+#: ./view.py:35
+msgid "Preload"
+msgstr "Préchargement"
+
+#: ./display_mode_3.pt:15
+#: ./view.py:117
+msgid "Previous"
+msgstr "Précédente"
+
+#: ./view.py:49
+msgid "Render SS controls"
+msgstr "Afficher les contrôles"
+
+#: ./view.py:53
+msgid "Render navigation controls"
+msgstr "Afficher les contrôles de navigation"
+
+#: ./view.py:36
+msgid "Set to -1 to preload all images"
+msgstr "Mettre à -1 pour précharger l'ensemble des images"
+
+#: ./view.py:62
+msgid "Specifies whether keyboard navigation is enabled"
+msgstr "Précise si la navigation au clavier est activée"
+
+#: ./view.py:70
+msgid "Specifies whether the out and in transitions occur simultaneously or distinctly"
+msgstr ""
+
+#: ./view.py:66
+msgid "Specifies whether the slideshow should be playing or paused when the page first loads"
+msgstr ""
+
+#: ./view.py:54
+msgid "Specifies whether the slideshow's Next and Previous links should be rendered"
+msgstr ""
+
+#: ./view.py:50
+msgid "Specifies whether the slideshow's Play and Pause links should be rendered"
+msgstr ""
+
+#: ./view.py:58
+msgid "Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes"
+msgstr ""
+
+#: ./view.py:69
+msgid "Sync transitions"
+msgstr "Synchroniser les transitions"
+
+#: ./view.py:46
+msgid "The maximum number of pages to display in either the top or bottom pager"
+msgstr "Le nombre maximum de pages à afficher que ce soit en navigation haute ou basse"
+
+#: ./view.py:73
+msgid "default transition duration"
+msgstr "Temps par défaut entre deux transitions"
+
+#: ./view.py:29
+msgid "in milliseconds"
+msgstr "En millisecondes"
+

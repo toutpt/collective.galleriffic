@@ -1,0 +1,159 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-08-21 16:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.galleriffic\n"
+
+#: ./view.py:120
+msgid "&lsaquo; Prev"
+msgstr ""
+
+#: ./view.py:65
+msgid "Autostart"
+msgstr ""
+
+#: ./view.py:28
+msgid "Delay"
+msgstr ""
+
+#: ./view.py:77
+msgid "Display Mode"
+msgstr ""
+
+#: ./display_mode_3.pt:34
+msgid "Download Original"
+msgstr ""
+
+#: ./view.py:61
+msgid "Enable Keyboard navigation"
+msgstr ""
+
+#: ./view.py:42
+msgid "Enable bottom pager"
+msgstr ""
+
+#: ./view.py:57
+msgid "Enable history"
+msgstr ""
+
+#: ./view.py:39
+msgid "Enable top pager"
+msgstr ""
+
+#: ./view.py:74
+msgid "If using the default transitions, specifies the duration of the transitions"
+msgstr ""
+
+#: ./view.py:45
+msgid "Max pages to show"
+msgstr ""
+
+#: ./view.py:18
+msgid "Model 1"
+msgstr ""
+
+#: ./view.py:19
+msgid "Model 2"
+msgstr ""
+
+#: ./view.py:20
+msgid "Model 3"
+msgstr ""
+
+#: ./display_mode_3.pt:18
+#: ./view.py:118
+msgid "Next"
+msgstr ""
+
+#: ./view.py:119
+msgid "Next &rsaquo;"
+msgstr ""
+
+#: ./view.py:32
+msgid "Number of thubnails to show per page"
+msgstr ""
+
+#: ./display_mode_3.pt:17
+#: ./view.py:116
+msgid "Pause"
+msgstr ""
+
+#: ./display_mode_3.pt:16
+#: ./view.py:115
+msgid "Play"
+msgstr ""
+
+#: ./view.py:35
+msgid "Preload"
+msgstr ""
+
+#: ./display_mode_3.pt:15
+#: ./view.py:117
+msgid "Previous"
+msgstr ""
+
+#: ./view.py:49
+msgid "Render SS controls"
+msgstr ""
+
+#: ./view.py:53
+msgid "Render navigation controls"
+msgstr ""
+
+#: ./view.py:36
+msgid "Set to -1 to preload all images"
+msgstr ""
+
+#: ./view.py:62
+msgid "Specifies whether keyboard navigation is enabled"
+msgstr ""
+
+#: ./view.py:70
+msgid "Specifies whether the out and in transitions occur simultaneously or distinctly"
+msgstr ""
+
+#: ./view.py:66
+msgid "Specifies whether the slideshow should be playing or paused when the page first loads"
+msgstr ""
+
+#: ./view.py:54
+msgid "Specifies whether the slideshow's Next and Previous links should be rendered"
+msgstr ""
+
+#: ./view.py:50
+msgid "Specifies whether the slideshow's Play and Pause links should be rendered"
+msgstr ""
+
+#: ./view.py:58
+msgid "Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes"
+msgstr ""
+
+#: ./view.py:69
+msgid "Sync transitions"
+msgstr ""
+
+#: ./view.py:46
+msgid "The maximum number of pages to display in either the top or bottom pager"
+msgstr ""
+
+#: ./view.py:73
+msgid "default transition duration"
+msgstr ""
+
+#: ./view.py:29
+msgid "in milliseconds"
+msgstr ""
+
