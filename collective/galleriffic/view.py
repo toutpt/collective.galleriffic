@@ -107,3 +107,15 @@ class GallerifficView(ConfigurableBaseView):
 
     def display_mode(self):
         return self.settings.get('display_mode', 'display_mode_1')
+
+
+    @property
+    def settings(self):
+        settings = super(GallerifficView, self).settings
+        settings['playLinkText'] = _(u"Play")
+        settings['pauseLinkText'] = _(u"Pause")
+        settings['prevLinkText'] = _(u"Previous")
+        settings['nextLinkText'] = _(u"Next")
+        settings['nextPageLinkText'] = _(u"Next &rsaquo;")
+        settings['prevPageLinkText'] = _(u"&lsaquo; Prev")
+        return settings

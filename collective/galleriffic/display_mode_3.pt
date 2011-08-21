@@ -8,36 +8,162 @@
 <body>
 <div metal:fill-slot="content-core">
 <link rel="stylesheet" type="text/css" tal:attributes="href string:${view/stylesheet}"/>
-<div id="galleriffic" tal:define="gallery nocall:context/@@gallery">
- <div id="gallery" class="content">
-     <div id="controls" class="controls"></div>
-     <div class="slideshow-container">
-         <div id="loading" class="loader"></div>
-         <div id="slideshow" class="slideshow"></div>
-     </div>
- </div>
- <div id="thumbs" class="navigation">
+<div id="galleriffic" tal:define="galleryview nocall:context/@@gallery">
 
-    <ul class="thumbs noscript">
-        <li tal:repeat="photo gallery/photos">
-            <a class="thumb" tal:attributes="name photo/id; href photo/url; title photo/title" tal:content="photo/title">
-            </a>
-            <div class="caption" tal:content="photo/description">
-            </div>
-        </li>
-    </ul>
- </div>
+        <div id="gallery">
+          <div id="gallerycontrol">
+              <a href="" id="galleryprev" i18n:translate="">Previous</a>
+              <a href="" id="galleryplay" i18n:translate="">Play</a>
+              <a href="" id="gallerypause" i18n:translate="">Pause</a>
+              <a href="" id="gallerynext" i18n:translate="">Next</a>
+          </div>
+          <div id="galleryloading" style="display:none"><img tal:attributes="src string:${galleryview/context/portal_url}/spinner.gif" /></div>
+          <div id="galleryphoto"></div>
+          <div id="gallerycaption"></div>
+          <div id="gallerythumbs" style="display:none">
+              <a href="" id="gallerypageprev">&lt;</a>
+              <a href="" id="gallerypagenext">&gt;</a>
+              <ul class="thumbs noscript">
+                <li tal:repeat="img galleryview/photos">
+                  <a class="thumb" tal:attributes="title img/title;href img/url; name img/id" title="Title #0">
+                    <img tal:attributes="src img/thumb_url;alt img/title" />
+                  </a>
+                  <div class="caption">
+                    <h2 tal:content="img/title">Title</h2>
+                    <p class="galleryphotodesc" tal:content="img/description">Description</p>
+                    <a tal:attributes="href img/url" target="_blank" i18n:translate="">Download Original</a>
+                  </div>
+                </li>
+              </ul>
+          </div>
+        </div>
+
+
 </div>
 <script type="text/javascript" tal:content="view/settings_javascripts"></script>
 <script type="text/javascript">
-galleriffic_config['imageContainerSel'] = "#slideshow";
-galleriffic_config['controlsContainerSel'] = "#controls";
-$('div.content').css('display', 'block');
-$('div.navigation').css({'width' : '300px', 'float' : 'left'});
-</script>
-<script type="text/javascript">
 jQuery(document).ready(function($) {
-  var gallery = $('#thumbs').galleriffic(galleriffic_config);
+  var galleryMaxsize = 400;
+  var galleryMouseOpacity = 0.67;
+  var galleryPhoto = $('#galleryphoto');
+  var galleryPhotoPosition = galleryPhoto.position();
+  var galleryPhotoWidth = galleryPhoto.width();
+  var galleryPhotoHeight = galleryPhoto.height();
+
+  
+  function galleryResizePhoto(photo) {
+      // resize the photo if the scale is greater than our maxsize
+      if (!photo)return;
+      var dw = photo.width() - galleryMaxsize;
+      var dh = photo.height() - galleryMaxsize;
+      if (dw > 0 || dh > 0) {
+          if (dw > dh){
+              photo.width(galleryMaxsize);
+          }else{photo.height(galleryMaxsize);}
+      }
+  }
+  function galleryCenterPhoto(photo) {
+      // display the photo in the good absolute position
+      // fix fast navigation bug (where imgs where added one upon the other)
+      if (!photo)return;
+      var photoWidth = photo.width();
+      var photoHeight = photo.height();
+      var photoTop = parseInt(galleryPhotoPosition.top + (galleryPhotoHeight - photoHeight) / 2);
+      var photoLeft = parseInt(galleryPhotoPosition.left + (galleryPhotoWidth - photoWidth) / 2);
+      photo.parent().parent().css({'position': 'absolute', 'top': photoTop + 'px', 'left': photoLeft + 'px'});
+  }
+
+    if ($('div#gallerythumbs').length == 0){return;}
+    if ($('ul.thumbs li').length == 0){return;}
+    $('div#gallerythumbs').css({'display': 'block'});
+    $('a.thumb').css({
+        'float': 'left',
+        'margin-right':'5px',
+        'height':'80px', //use ul.thumbs heigth from css
+        'border-bottom':'none'
+    });
+
+    $('.thumbs li, #gallerypageprev, #gallerypagenext').opacityrollover({
+     mouseOutOpacity: galleryMouseOpacity,
+     mouseOverOpacity: 1.0,
+     fadeSpeed: 'fast',
+     exemptionSelector: '.selected'
+     }); 
+
+
+  // override user configuration
+  galleriffic_config['imageContainerSel'] = '#galleryphoto';
+//  galleriffic_config['controlsContainerSel'] = '';
+  galleriffic_config['captionContainerSel'] = '#gallerycaption';
+
+  galleriffic_config['enableTopPager'] = false;
+  galleriffic_config['enableBottomPager'] = false;
+  galleriffic_config['enableHistory'] = false;
+  galleriffic_config['syncTransitions'] = true;
+  
+  galleriffic_config['onSlideChange'] = function(prevIndex, nextIndex) {
+           if (this.isSlideshowRunning) {
+              $('#galleryplay').hide();
+              $('#gallerypause').show();
+           } else {
+              $('#gallerypause').hide();
+              $('#galleryplay').show();
+           }
+  };
+  galleriffic_config['onTransitionOut'] = undefined;
+  galleriffic_config['onTransitionIn'] = function(newSlide, newCaption, isSync){
+            //code kept from galleriffic
+            $('.image-caption').hide();
+            newSlide.fadeTo(this.getDefaultTransitionDuration(isSync), 1.0);
+            if (newCaption)
+                newCaption.fadeTo(this.getDefaultTransitionDuration(isSync), 1.0);
+            galleryResizePhoto(newSlide.find('img'));
+            galleryCenterPhoto(newSlide.find('img'));
+
+  };
+  var gallery = $('#gallerythumbs').galleriffic(galleriffic_config);
+
+  /**************** Event handlers for custom next / prev page links **********************/
+
+    if (gallery.autoStart){
+        $('#galleryplay').hide();
+        $('#gallerypause').show();
+    } else {
+        $('#gallerypause').hide();
+        $('#galleryplay').show();
+    }
+    $('#gallerypageprev').click(function(e) {
+       gallery.previousPage();
+       e.preventDefault();
+     });
+    
+    $('#gallerypagenext').click(function(e) {
+       gallery.nextPage();
+       e.preventDefault();
+     }); 
+    $('#galleryprev').click(function(e) {
+       gallery.previous();
+       e.preventDefault();
+     });
+    $('#gallerynext').click(function(e) {
+       gallery.next();
+       e.preventDefault();
+     });
+
+    $('#galleryplay').click(function(e) {
+       $('#galleryplay').hide();
+       gallery.play();
+       e.preventDefault();
+       $('#gallerypause').show();
+     });
+    $('#gallerypause').click(function(e) {
+       $('#gallerypause').hide();
+       gallery.pause();
+       e.preventDefault();
+       $('#galleryplay').show();
+     });
+
+
 });
 </script>
 </div>
