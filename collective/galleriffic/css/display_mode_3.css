@@ -1,49 +1,48 @@
-#gallerythumbs,
-#galleryphoto{
+#thumbs,
+#photo{
 /*    background-color:#000000;*/
 }
-#gallerythumbs ul.thumbs{
+#thumbs ul.thumbs{
   display:block;
   height:80px; /* thumb_max_size + 8 */
   margin:0px 1em;
 }
-#gallerythumbs ul.thumbs li {
+#thumbs ul.thumbs li {
   float: left;
   list-style: none outside none;
   margin: 5px 0 5px 0;
   padding: 0;
 }
-#gallerythumbs a,
-#gallerythumbs a:visited
+#thumbs a,
+#thumbs a:visited
 {font-weight:bold;text-decoration:none;border:0;line-height:80px;}
-#gallerypageprev{float:left;}
-#gallerypagenext{float:right;}
+#pageprev{float:left;}
+#pagenext{float:right;}
 
-#galleryphoto {
+#photo {
   height:420px; /* photo_max_size + 20 */
 }
-#gallerycontrol,
-#galleryphoto,
-#gallerythumbs{
+#control,
+#photo,
+#thumbs{
   width: 420px; /* photo_max_size + 20 */
 }
-#gallerycontrol #galleryprev{
+#control #prev{
     float:left;
 }
-#gallerycontrol
+#control
 {
     text-align:center;
 }
-#gallerycontrol #gallerynext{
+#control #next{
     float:right;
 }
 /*force thumb sizes*/
 .thumb img{width:72px; height:72px;}
 
 /* caption styling */
-#gallerycaption {
+#caption {
     display:none;
-    background:url('gallery_tooltip.png');
     height:143px;
     width:240px;
     padding:40px 30px 10px 30px;

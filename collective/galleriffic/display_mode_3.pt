@@ -10,33 +10,31 @@
 <link rel="stylesheet" type="text/css" tal:attributes="href string:${view/stylesheet}"/>
 <div id="galleriffic" tal:define="galleryview nocall:context/@@gallery">
 
-        <div id="gallery">
-          <div id="gallerycontrol">
-              <a href="" id="galleryprev" i18n:translate="">Previous</a>
-              <a href="" id="galleryplay" i18n:translate="">Play</a>
-              <a href="" id="gallerypause" i18n:translate="">Pause</a>
-              <a href="" id="gallerynext" i18n:translate="">Next</a>
+  <div id="control">
+      <a href="" id="prev" i18n:translate="">Previous</a>
+      <a href="" id="play" i18n:translate="">Play</a>
+      <a href="" id="pause" i18n:translate="">Pause</a>
+      <a href="" id="next" i18n:translate="">Next</a>
+  </div>
+  <div id="loading" style="display:none"><img tal:attributes="src string:${galleryview/context/portal_url}/spinner.gif" /></div>
+  <div id="photo"></div>
+  <div id="caption"></div>
+  <div id="thumbs" style="display:none">
+      <a href="" id="pageprev">&lt;</a>
+      <a href="" id="pagenext">&gt;</a>
+      <ul class="thumbs noscript">
+        <li tal:repeat="img galleryview/photos">
+          <a class="thumb" tal:attributes="title img/title;href img/url; name img/id" title="Title #0">
+            <img tal:attributes="src img/thumb_url;alt img/title" />
+          </a>
+          <div class="caption">
+            <h2 tal:content="img/title">Title</h2>
+            <p class="photodesc" tal:content="img/description">Description</p>
+            <a tal:attributes="href img/url" target="_blank" i18n:translate="">Download Original</a>
           </div>
-          <div id="galleryloading" style="display:none"><img tal:attributes="src string:${galleryview/context/portal_url}/spinner.gif" /></div>
-          <div id="galleryphoto"></div>
-          <div id="gallerycaption"></div>
-          <div id="gallerythumbs" style="display:none">
-              <a href="" id="gallerypageprev">&lt;</a>
-              <a href="" id="gallerypagenext">&gt;</a>
-              <ul class="thumbs noscript">
-                <li tal:repeat="img galleryview/photos">
-                  <a class="thumb" tal:attributes="title img/title;href img/url; name img/id" title="Title #0">
-                    <img tal:attributes="src img/thumb_url;alt img/title" />
-                  </a>
-                  <div class="caption">
-                    <h2 tal:content="img/title">Title</h2>
-                    <p class="galleryphotodesc" tal:content="img/description">Description</p>
-                    <a tal:attributes="href img/url" target="_blank" i18n:translate="">Download Original</a>
-                  </div>
-                </li>
-              </ul>
-          </div>
-        </div>
+        </li>
+      </ul>
+  </div>
 
 
 </div>
@@ -45,7 +43,7 @@
 jQuery(document).ready(function($) {
   var galleryMaxsize = 400;
   var galleryMouseOpacity = 0.67;
-  var galleryPhoto = $('#galleryphoto');
+  var galleryPhoto = $('#photo');
   var galleryPhotoPosition = galleryPhoto.position();
   var galleryPhotoWidth = galleryPhoto.width();
   var galleryPhotoHeight = galleryPhoto.height();
@@ -73,9 +71,9 @@ jQuery(document).ready(function($) {
       photo.parent().parent().css({'position': 'absolute', 'top': photoTop + 'px', 'left': photoLeft + 'px'});
   }
 
-    if ($('div#gallerythumbs').length == 0){return;}
+    if ($('div#thumbs').length == 0){return;}
     if ($('ul.thumbs li').length == 0){return;}
-    $('div#gallerythumbs').css({'display': 'block'});
+    $('div#thumbs').css({'display': 'block'});
     $('a.thumb').css({
         'float': 'left',
         'margin-right':'5px',
@@ -83,7 +81,7 @@ jQuery(document).ready(function($) {
         'border-bottom':'none'
     });
 
-    $('.thumbs li, #gallerypageprev, #gallerypagenext').opacityrollover({
+    $('.thumbs li, #pageprev, #pagenext').opacityrollover({
      mouseOutOpacity: galleryMouseOpacity,
      mouseOverOpacity: 1.0,
      fadeSpeed: 'fast',
@@ -92,9 +90,9 @@ jQuery(document).ready(function($) {
 
 
   // override user configuration
-  galleriffic_config['imageContainerSel'] = '#galleryphoto';
+  galleriffic_config['imageContainerSel'] = '#photo';
 //  galleriffic_config['controlsContainerSel'] = '';
-  galleriffic_config['captionContainerSel'] = '#gallerycaption';
+  galleriffic_config['captionContainerSel'] = '#caption';
 
   galleriffic_config['enableTopPager'] = false;
   galleriffic_config['enableBottomPager'] = false;
@@ -103,11 +101,11 @@ jQuery(document).ready(function($) {
   
   galleriffic_config['onSlideChange'] = function(prevIndex, nextIndex) {
            if (this.isSlideshowRunning) {
-              $('#galleryplay').hide();
-              $('#gallerypause').show();
+              $('#play').hide();
+              $('#pause').show();
            } else {
-              $('#gallerypause').hide();
-              $('#galleryplay').show();
+              $('#pause').hide();
+              $('#play').show();
            }
   };
   galleriffic_config['onTransitionOut'] = undefined;
@@ -121,46 +119,46 @@ jQuery(document).ready(function($) {
             galleryCenterPhoto(newSlide.find('img'));
 
   };
-  var gallery = $('#gallerythumbs').galleriffic(galleriffic_config);
+  var gallery = $('#thumbs').galleriffic(galleriffic_config);
 
   /**************** Event handlers for custom next / prev page links **********************/
 
     if (gallery.autoStart){
-        $('#galleryplay').hide();
-        $('#gallerypause').show();
+        $('#play').hide();
+        $('#pause').show();
     } else {
-        $('#gallerypause').hide();
-        $('#galleryplay').show();
+        $('#pause').hide();
+        $('#play').show();
     }
-    $('#gallerypageprev').click(function(e) {
+    $('#pageprev').click(function(e) {
        gallery.previousPage();
        e.preventDefault();
      });
     
-    $('#gallerypagenext').click(function(e) {
+    $('#pagenext').click(function(e) {
        gallery.nextPage();
        e.preventDefault();
      }); 
-    $('#galleryprev').click(function(e) {
+    $('#prev').click(function(e) {
        gallery.previous();
        e.preventDefault();
      });
-    $('#gallerynext').click(function(e) {
+    $('#next').click(function(e) {
        gallery.next();
        e.preventDefault();
      });
 
-    $('#galleryplay').click(function(e) {
-       $('#galleryplay').hide();
+    $('#play').click(function(e) {
+       $('#play').hide();
        gallery.play();
        e.preventDefault();
-       $('#gallerypause').show();
+       $('#pause').show();
      });
-    $('#gallerypause').click(function(e) {
-       $('#gallerypause').hide();
+    $('#pause').click(function(e) {
+       $('#pause').hide();
        gallery.pause();
        e.preventDefault();
-       $('#galleryplay').show();
+       $('#play').show();
      });
 
 
