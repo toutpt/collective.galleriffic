@@ -28,7 +28,7 @@
     </ul>
  </div>
 </div>
-<script type="text/javascript" tal:content="view/settings_javascripts"></script>
+<script type="text/javascript" tal:content="structure view/settings_javascripts"></script>
 <script type="text/javascript">
 galleriffic_config['imageContainerSel'] = "#slideshow";
 galleriffic_config['controlsContainerSel'] = "#controls";

@@ -20,8 +20,7 @@
 
     <ul class="thumbs noscript">
         <li tal:repeat="photo gallery/photos">
-            <a class="thumb" tal:attributes="name photo/id; href photo/url; title photo/title">
-              <img tal:attributes="src photo/thumb_url"/>
+            <a class="thumb" tal:attributes="name photo/id; href photo/url; title photo/title" tal:content="photo/title">
             </a>
             <div class="caption" tal:content="photo/description">
             </div>
@@ -29,7 +28,7 @@
     </ul>
  </div>
 </div>
-<script type="text/javascript" tal:content="structure view/settings_javascripts"></script>
+<script type="text/javascript" tal:content="view/settings_javascripts"></script>
 <script type="text/javascript">
 galleriffic_config['imageContainerSel'] = "#slideshow";
 galleriffic_config['controlsContainerSel'] = "#controls";

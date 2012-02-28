@@ -12,16 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.galleriffic\n"
 "Report-Msgid-Bugs-To: http://dev.plone.org/plone\n"
 "Language: fr\n"
 
 #: ./view.py:120
-msgid "&lsaquo; Prev"
-msgstr "&lsaquo; Pré"
+msgid "&laquo; Prev"
+msgstr "&laquo; Préc"
 
 #: ./view.py:65
 msgid "Autostart"
@@ -29,7 +29,7 @@ msgstr "Démarrage automatique"
 
 #: ./view.py:28
 msgid "Delay"
-msgstr ""
+msgstr "Retard"
 
 #: ./view.py:77
 msgid "Display Mode"
@@ -45,7 +45,7 @@ msgstr "Activer la navigation au clavier"
 
 #: ./view.py:42
 msgid "Enable bottom pager"
-msgstr "Activer la navigation basse"
+msgstr "Activer la pagination en bas"
 
 #: ./view.py:57
 msgid "Enable history"
@@ -53,11 +53,11 @@ msgstr "Activer le plugin history"
 
 #: ./view.py:39
 msgid "Enable top pager"
-msgstr "Activer la navigation haute"
+msgstr "Activer la pagination en haut"
 
 #: ./view.py:74
 msgid "If using the default transitions, specifies the duration of the transitions"
-msgstr ""
+msgstr "Si vous utilisez la transition par défaut, vous pouvez préciser la durée de la transition"
 
 #: ./view.py:45
 msgid "Max pages to show"
@@ -81,8 +81,8 @@ msgid "Next"
 msgstr "Suivante"
 
 #: ./view.py:119
-msgid "Next &rsaquo;"
-msgstr "Suivante &rsaquo;"
+msgid "Next &raquo;"
+msgstr "Suiv &raquo;"
 
 #: ./view.py:32
 msgid "Number of thubnails to show per page"
@@ -125,23 +125,23 @@ msgstr "Précise si la navigation au clavier est activée"
 
 #: ./view.py:70
 msgid "Specifies whether the out and in transitions occur simultaneously or distinctly"
-msgstr ""
+msgstr "Préciser si les transitions in et out arrive simultanément ou distinctement"
 
 #: ./view.py:66
 msgid "Specifies whether the slideshow should be playing or paused when the page first loads"
-msgstr ""
+msgstr "Préciser si le diaporama devrait démarrer ou être en pause lorsque la page vient de se charger"
 
 #: ./view.py:54
 msgid "Specifies whether the slideshow's Next and Previous links should be rendered"
-msgstr ""
+msgstr "Préciser le les liens Précédent et Suivant doivent être affichés"
 
 #: ./view.py:50
 msgid "Specifies whether the slideshow's Play and Pause links should be rendered"
-msgstr ""
+msgstr "Préciser si les liens Jouer et Pause doivent être affichés"
 
 #: ./view.py:58
 msgid "Specifies whether the url's hash and the browser's history cache should update when the current slideshow image changes"
-msgstr ""
+msgstr "Préciser si les URL et l'historique du navigateur doivent être mis à jour avec le changement d'image"
 
 #: ./view.py:69
 msgid "Sync transitions"

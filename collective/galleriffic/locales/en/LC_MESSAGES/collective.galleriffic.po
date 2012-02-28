@@ -19,7 +19,7 @@ msgstr ""
 "Language: en\n"
 
 #: ./view.py:120
-msgid "&lsaquo; Prev"
+msgid "&laquo; Prev"
 msgstr ""
 
 #: ./view.py:65
@@ -80,7 +80,7 @@ msgid "Next"
 msgstr ""
 
 #: ./view.py:119
-msgid "Next &rsaquo;"
+msgid "Next &raquo;"
 msgstr ""
 
 #: ./view.py:32
