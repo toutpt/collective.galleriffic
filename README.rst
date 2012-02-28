@@ -1,8 +1,12 @@
 Introduction
 ============
 
-This addon is an integration of galleriffic in Plone using gallery. 
+This addon is an integration of galleriffic_ in Plone using gallery_. 
 It provides a Galleriffic view for Folder, Collection and Link content types.
+
+This addon can manage thousands of photos in the same albums without any
+performance issues. This is not common in the world of gallery/slideshow
+jquery plugins.
 
 Dependencies
 ============
@@ -37,3 +41,26 @@ Options are translated.
 * Autostart
 * Sync transitions
 * default transition duration
+
+
+Credits
+=======
+
+Companies
+---------
+
+|makinacom|_
+
+* `Planet Makina Corpus <http://www.makina-corpus.org>`_
+* `Contact us <mailto:python@makina-corpus.org>`_
+
+Authors
+
+  - JeanMichel FRANCOIS aka toutpt <toutpt@gmail.com>
+
+.. Contributors
+
+.. |makinacom| image:: http://depot.makina-corpus.org/public/logo.gif
+.. _makinacom:  http://www.makina-corpus.com
+.. _Galleriffic: http://www.twospy.com/galleriffic/
+.. _gallery: http://plone.org/products/collective.gallery
