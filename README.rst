@@ -56,7 +56,7 @@ Companies
 
 Authors
 
-  - JeanMichel FRANCOIS aka toutpt <toutpt@gmail.com>
+- JeanMichel FRANCOIS aka toutpt <toutpt@gmail.com>
 
 .. Contributors
 
